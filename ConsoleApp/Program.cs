@@ -1,10 +1,14 @@
-﻿using ConsoleApp.Params;
+﻿using ConsoleApp.OverloadPriority;
+using ConsoleApp.Params;
+using System.Runtime.CompilerServices;
 
 namespace DotNetConf2024.CSharp13.ConsoleApp;
 public class Program
 {
     public static void Main(string[] args)
     {
+        #region Params
+
         UsingParams usingParams = new UsingParams();
 
         //در سی شارپ 12 باید همه تایپ ها به ارایه تبدیل میکردیم
@@ -14,6 +18,28 @@ public class Program
         var set = new HashSet<int> { 9, 10 };
 
         usingParams.PrintItems(list, array, queue, set);
+
+        #endregion
+
+        #region OverloadPriorityExample
+
+        OverloadPriorityExample example = new OverloadPriorityExample();
+
+        Temp temp = new Temp
+        {
+            Id = 1
+        };
+
+        Test test = new Test
+        {
+            Id = 1
+        };
+
+        example.Show(test);
+
+        example.Show(temp);
+
+        #endregion
 
     }
 }
