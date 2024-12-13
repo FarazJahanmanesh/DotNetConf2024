@@ -114,8 +114,12 @@ public class Program
 
         //میتوانیم از کد های ANSI Escape که معمولا برای تغییر رنگ کنسول است استفاده کنیم 
         //یا رفتار های مختلف برای ترمینال خود تعریف کنیم
+        //توسعه ابزارهای CLI (Command Line Interface)
 
-        Console.WriteLine($"{GetEscapeSequence()}[31mThis text is red.{GetEscapeSequence()}[0m");
+        //دستورات خاص در برخی کتابخانه‌ها
+        // در برخی از کتابخانه‌های کار با ترمینال، \e ممکن است برای ارسال دستورات کنترلی خاص به ترمینال یا شناسایی ورودی‌های خاص استفاده شود
+
+        Console.WriteLine($"{GetEscapeSequence()}[31mThis text is red.{GetEscapeSequence()}[0m");//جاپ پیغام به رنگ قرمز
 
         Console.WriteLine($"{GetEscapeSequence()}[2J");//پاک کردن صفحه
         #endregion
