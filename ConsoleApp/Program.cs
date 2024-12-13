@@ -1,4 +1,5 @@
-﻿using ConsoleApp.OverloadPriority;
+﻿using ConsoleApp.ImplicitIndexAccess;
+using ConsoleApp.OverloadPriority;
 using ConsoleApp.OverloadResolution;
 using ConsoleApp.Params;
 using ConsoleApp.PatternsMatching;
@@ -24,7 +25,7 @@ public class Program
 
     static void NewLockIncrement()
     {
-        lock (newLock) 
+        lock (newLock)
         {
             sharedCounter++;
             Console.WriteLine($"New Lock: Counter = {sharedCounter}");
@@ -47,7 +48,7 @@ public class Program
     public static void Main(string[] args)
     {
         #region Params
-        
+
         UsingParams usingParams = new UsingParams();
 
         //در سی شارپ 12 باید همه تایپ ها به ارایه تبدیل میکردیم
@@ -101,7 +102,58 @@ public class Program
 
         OverloadResolutionExample overloadResolutionExample = new OverloadResolutionExample();
 
-        overloadResolutionExample.Add(2,4);
+        overloadResolutionExample.Add(2, 4);
+
+        #endregion
+
+        #region ImplicitIndexAccess
+
+        //کد کوتاه‌تر و خواناتر
+        //دسترس ‌پذیری آسان‌تر
+        ///////////می‌توانید به عناصر آرایه به‌راحتی از انتها دسترسی پیدا کنید، بدون نیاز به محاسبه ایندکس‌ها
+        //خانوایی بالاتر کد 
+        //در واقع با طور داخلی از همان روش استفاده میکند 
+        // ولی استفاده از این روش overhead ندارد
+
+        //C# 13
+        var newCountdown = new ImplicitIndexAccessExample()
+        {
+            buffer =
+            {
+                [^1] = 0,  // آخرین عنصر (ایندکس 9)
+                [^2] = 1,  // عنصر قبل از آخرین (ایندکس 8)
+                [^3] = 2,  // عنصر بعدی (ایندکس 7)
+                [^4] = 3,  // عنصر بعدی (ایندکس 6)
+                [^5] = 4,  // عنصر بعدی (ایندکس 5)
+                [^6] = 5,  // عنصر بعدی (ایندکس 4)
+                [^7] = 6,  // عنصر بعدی (ایندکس 3)
+                [^8] = 7,  // عنصر بعدی (ایندکس 2)
+                [^9] = 8,  // عنصر بعدی (ایندکس 1)
+                [^10] = 9  // اولین عنصر (ایندکس 0)
+            }
+        };
+
+        int newWaylastElement = newCountdown.buffer[^1];
+
+        //C# 12 
+        var oldCountdown = new ImplicitIndexAccessExample();
+        oldCountdown.buffer[0] = 9;  // ایندکس 0
+        oldCountdown.buffer[1] = 8;  // ایندکس 1
+        oldCountdown.buffer[2] = 7;  // ایندکس 2
+        oldCountdown.buffer[3] = 6;  // ایندکس 3
+        oldCountdown.buffer[4] = 5;  // ایندکس 4
+        oldCountdown.buffer[5] = 4;  // ایندکس 5
+        oldCountdown.buffer[6] = 3;  // ایندکس 6
+        oldCountdown.buffer[7] = 2;  // ایندکس 7
+        oldCountdown.buffer[8] = 1;  // ایندکس 8
+        oldCountdown.buffer[9] = 0;  // ایندکس 9
+
+        // برای دسترسی به آخرین عنصر
+        int oldWaylastElement = oldCountdown.buffer[oldCountdown.buffer.Length - 1];  // محاسبه ایندکس
+
+        //C# 13
+        List<int> numbersList = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        int lastElementList = numbersList[^1]; 
 
         #endregion
 
