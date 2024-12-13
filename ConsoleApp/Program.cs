@@ -1,5 +1,6 @@
 ﻿using ConsoleApp.OverloadPriority;
 using ConsoleApp.Params;
+using ConsoleApp.PatternsMatching;
 
 namespace DotNetConf2024.CSharp13.ConsoleApp;
 public class Program
@@ -41,5 +42,16 @@ public class Program
 
         #endregion
 
+        #region PatternMatching
+
+        PatternMatching patternMatching = new PatternMatching();
+
+        Console.WriteLine(patternMatching.Nand(true, true));
+
+        Console.WriteLine(patternMatching.Nand2(false, true));
+
+        patternMatching.RunTest();
+
+        #endregion
     }
 }
