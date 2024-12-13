@@ -6,9 +6,40 @@ using ConsoleApp.Records;
 namespace DotNetConf2024.CSharp13.ConsoleApp;
 public class Program
 {
+    //System.Threading
+    //نوع obj که لاک شده است object 
+    // نسخه قدیمی استفاده از Monitor.Enter() و Monitor.Exit()
+    ////////////اگر به اشتباه Monitor.Exit() فراموش شود، lock آزاد نمی‌شود که منجر به مشکلات می‌شود.
+
+    //System.Threading.Lock
+    //نسخه جدید پشتیبانی از متد EnterScope() برای مدیریت بهتر
+    ////////////کامپایلر تضمین می‌کند که قفل در پایان محدوده آزاد شود.
+    // قابلیت Dispose ندارد
+
+
+    static readonly object oldLock = new object();
+    static Lock newLock = new Lock();
+    static int sharedCounter = 0;
+
+    static void NewLockIncrement()
+    {
+        lock (newLock) 
+        {
+            sharedCounter++;
+            Console.WriteLine($"New Lock: Counter = {sharedCounter}");
+        }
+    }
+    static void OldLockIncrement()
+    {
+        lock (oldLock)
+        {
+            sharedCounter++;
+            Console.WriteLine($"Old Lock: Counter = {sharedCounter}");
+        }
+    }
+
     public static void Main(string[] args)
     {
-
         #region Params
 
         UsingParams usingParams = new UsingParams();
@@ -66,5 +97,15 @@ public class Program
         Console.WriteLine(secondAnimal.Name);
 
         #endregion
+
+        #region Lock System.Threading.Lock
+
+        NewLockIncrement();
+        NewLockIncrement();
+        OldLockIncrement();
+        OldLockIncrement();
+
+        #endregion
+
     }
 }
