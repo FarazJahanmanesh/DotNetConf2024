@@ -37,11 +37,14 @@ public class Program
             Console.WriteLine($"Old Lock: Counter = {sharedCounter}");
         }
     }
-
+    static string GetEscapeSequence()
+    {
+        return "\e";
+    }
     public static void Main(string[] args)
     {
         #region Params
-
+        
         UsingParams usingParams = new UsingParams();
 
         //در سی شارپ 12 باید همه تایپ ها به ارایه تبدیل میکردیم
@@ -107,5 +110,14 @@ public class Program
 
         #endregion
 
+        #region ANSIEscape
+
+        //میتوانیم از کد های ANSI Escape که معمولا برای تغییر رنگ کنسول است استفاده کنیم 
+        //یا رفتار های مختلف برای ترمینال خود تعریف کنیم
+
+        Console.WriteLine($"{GetEscapeSequence()}[31mThis text is red.{GetEscapeSequence()}[0m");
+
+        Console.WriteLine($"{GetEscapeSequence()}[2J");//پاک کردن صفحه
+        #endregion
     }
 }

@@ -3,8 +3,12 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net9.0</TargetFramework>
+	<!--<LangVersion>Preview</LangVersion>-->
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
 </Project>
+<!--اجازه میدهد ویژگی های زبانی که هنوز در حال ازمایش است و نهایی نشده را داشته باشد
+که باعث میشه برنامه نویس ها بتونن زودتر از موعد یادگیری و ازمایش کنند
+باعث میشه بتونیم فیدبک بدیم-->
