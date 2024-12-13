@@ -1,6 +1,7 @@
 ﻿using ConsoleApp.OverloadPriority;
 using ConsoleApp.Params;
 using ConsoleApp.PatternsMatching;
+using ConsoleApp.Records;
 
 namespace DotNetConf2024.CSharp13.ConsoleApp;
 public class Program
@@ -51,6 +52,18 @@ public class Program
         Console.WriteLine(patternMatching.Nand2(false, true));
 
         patternMatching.RunTest();
+
+        #endregion
+
+        #region Animal
+
+        var firstAnimal = new Animal("pig", 8);
+
+        var secondAnimal = firstAnimal with { Name = "cat" };
+
+        Console.WriteLine(firstAnimal.Name);
+
+        Console.WriteLine(secondAnimal.Name);
 
         #endregion
     }
