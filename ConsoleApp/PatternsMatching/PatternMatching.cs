@@ -1,7 +1,7 @@
 ﻿namespace ConsoleApp.PatternsMatching;
 public class PatternMatching
 {
-
+        
     //هندل کردن همه حالت های ممکن باعث میشود دیگر به مقدار پیش فرض نیازی نباشد
     public bool Nand(bool a, bool b) =>
         (a, b) switch
@@ -12,6 +12,8 @@ public class PatternMatching
             (false, true) => false
         };
 
+
+    //c# 9
     //میتوان تنها حالت مد نظر خودمون بنویسیم و حالات دیگر را با همان پیش فرض هندل کنیم
     public bool Nand2(bool a, bool b) =>
      (a, b) switch
