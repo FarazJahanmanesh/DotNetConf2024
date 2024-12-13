@@ -4,6 +4,7 @@ using ConsoleApp.OverloadResolution;
 using ConsoleApp.Params;
 using ConsoleApp.PatternsMatching;
 using ConsoleApp.Records;
+using ConsoleApp.RefAndUnsafeAsync;
 
 namespace DotNetConf2024.CSharp13.ConsoleApp;
 public class Program
@@ -153,7 +154,17 @@ public class Program
 
         //C# 13
         List<int> numbersList = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-        int lastElementList = numbersList[^1]; 
+        int lastElementList = numbersList[^1];
+
+        #endregion
+
+        #region RefAndUnsafeAsync
+
+        RefAndAsyncExample unsafeAsyncExample = new RefAndAsyncExample();
+        unsafeAsyncExample.Call().GetAwaiter().GetResult();
+
+        UnsafeRefExample unsafeRefExample = new UnsafeRefExample();
+        unsafeRefExample.Call();
 
         #endregion
 
