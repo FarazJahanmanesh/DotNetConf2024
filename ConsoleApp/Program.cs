@@ -160,11 +160,11 @@ public class Program
 
         #region RefAndUnsafeAsync
 
-        RefAndAsyncExample unsafeAsyncExample = new RefAndAsyncExample();
-        unsafeAsyncExample.Call().GetAwaiter().GetResult();
+        //RefAndAsyncExample unsafeAsyncExample = new RefAndAsyncExample();
+        //unsafeAsyncExample.Call().GetAwaiter().GetResult();
 
-        UnsafeRefExample unsafeRefExample = new UnsafeRefExample();
-        unsafeRefExample.Call();
+        //UnsafeRefExample unsafeRefExample = new UnsafeRefExample();
+        //unsafeRefExample.Call();
 
         #endregion
 
